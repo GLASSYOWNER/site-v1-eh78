@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!-- V1: Clean Minimal | AI Website Factory | GitHub→Vercel -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>undefined - Your Trusted Local Expert</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#6366f1;
+      --accent:#f59e0b;
+      --bg:#ffffff;
+      --surface:#f8fafc;
+      --text:#0f172a;
+      --muted:#64748b;
+      --border:#e2e8f0;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    img{max-width:100%;display:block;}
+    a{text-decoration:none;color:inherit;}
+    button,input,textarea{font-family:inherit;}
+    h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.2;color:var(--text);}
+    .container{max-width:1200px;margin:0 auto;padding:0 1.5rem;}
+    .btn{
+      display:inline-block;
+      padding:0.9rem 1.8rem;
+      background:var(--primary);
+      color:#fff;
+      border-radius:8px;
+      font-weight:600;
+      transition:background .3s ease;
+    }
+    .btn:hover{background:#4f46e5;}
+    .btn--secondary{background:var(--accent);}
+    .btn--secondary:hover{background:#f59e0b;}
+    .btn--outline{background:transparent;border:2px solid var(--primary);color:var(--primary);}
+    .btn--outline:hover{background:var(--primary);color:#fff;}
+    .text-center{text-align:center;}
+    .section{padding:4rem 0;}
+    .section-title{font-size:2.25rem;margin-bottom:.5rem;}
+    .section-subtitle{color:var(--muted);margin-bottom:2rem;}
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:var(--bg);
+      border-bottom:1px solid var(--border);
+      transition:box-shadow .3s ease;
+    }
+    header.scrolled{box-shadow:0 2px 8px rgba(0,0,0,.05);}
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:1rem 0;
+    }
+    .logo{font-size:1.5rem;font-weight:800;color:var(--primary);}
+    nav ul{
+      display:flex;
+      gap:1.5rem;
+      list-style:none;
+    }
+    nav a{font-weight:500;color:var(--text);}
+    nav a:hover{color:var(--primary);}
+    .nav-cta{display:flex;align-items:center;gap:.75rem;}
+    .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;}
+    .hamburger span{
+      width:24px;height:3px;background:var(--text);border-radius:2px;
+    }
+    .hero{
+      position:relative;
+      min-height:90vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background:url("") center/cover no-repeat;
+      color:#fff;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;background:rgba(0,0,0,.55);
+    }
+    .hero-content{position:relative;z-index:1;max-width:700px;}
+    .hero h1{font-size:3rem;margin-bottom:1rem;}
+    .hero p{margin-bottom:2rem;font-size:1.125rem;}
+    .hero-buttons{display:flex;gap:1rem;justify-content:center;margin-bottom:2rem;}
+    .hero-stats{
+      display:flex;justify-content:center;gap:2rem;
+    }
+    .stat-item{text-align:center;}
+    .stat-item h3{font-size:1.5rem;margin-bottom:.25rem;}
+    .stat-item p{color:#e2e8f0;font-size:.9rem;}
+    .services-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;
+    }
+    .service-card{
+      background:var(--surface);border-radius:12px;padding:2rem;box-shadow:0 4px 12px rgba(0,0,0,.06);transition:transform .3s ease;
+    }
+    .service-card:hover{transform:translateY(-4px);}
+    .service-card.popular{box-shadow:0 0 0 3px var(--primary);}
+    .service-icon{width:48px;height:48px;margin-bottom:1rem;}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;}
+    .about-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.5rem 0;}
+    .stat-box{background:var(--surface);border-radius:8px;padding:1.25rem;text-align:center;}
+    .stat-box h4{font-size:1.75rem;margin-bottom:.25rem;}
+    .testimonials-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;
+    }
+    .testimonial-card{
+      background:var(--surface);border-radius:12px;padding:2rem;box-shadow:0 4px 12px rgba(0,0,0,.06);
+    }
+    .stars{color:#f59e0b;margin-bottom:.75rem;}
+    .gallery-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;
+    }
+    .gallery-grid img{
+      border-radius:8px;transition:transform .4s ease;cursor:pointer;
+    }
+    .gallery-grid img:hover{transform:scale(1.05);}
+    .cta-banner{
+      background:linear-gradient(135deg,var(--primary) 0%,#818cf8 100%);
+      color:#fff;text-align:center;padding:4rem 2rem;border-radius:12px;
+    }
+    .cta-banner h2{margin-bottom:1rem;font-size:2rem;}
+    .contact-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-bottom:2rem;
+    }
+    .contact-card{
+      background:var(--surface);border-radius:12px;padding:2rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.04);
+    }
+    .map-container{
+      width:100%;height:320px;border-radius:12px;overflow:hidden;border:1px solid var(--border);
+    }
+    footer{
+      background:var(--surface);border-top:1px solid var(--border);padding:3rem 0 2rem;
+    }
+    .footer-inner{
+      display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:flex-start;
+    }
+    .footer-links ul{list-style:none;display:flex;gap:1.25rem;}
+    .footer-links a{color:var(--muted);}
+    .footer-links a:hover{color:var(--primary);}
+    @media(max-width:768px){
+      nav ul{display:none;}
+      .hamburger{display:flex;}
+      .hero-buttons{flex-direction:column;align-items:center;}
+      .about-grid{grid-template-columns:1fr;}
+      .footer-inner{flex-direction:column;text-align:center;}
+      .footer-links ul{justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="logo">undefined</a>
+        <nav>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="nav-cta">
+          <a href="https://wa.me/undefined" target="_blank" class="btn btn--secondary">WhatsApp</a>
+          <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="reveal">Your Trusted Local Expert</h1>
+      <p class="reveal">undefined delivers quality with transparency, speed, and care. Discover why locals rate us undefined/5.</p>
+      <div class="hero-buttons reveal">
+        <a href="https://wa.me/undefined" target="_blank" class="btn">Chat on WhatsApp</a>
+        <a href="#services" class="btn btn--outline">View Services</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat-item">
+          <h3>undefined/5</h3>
+          <p>Google Rating</p>
+        </div>
+        <div class="stat-item">
+          <h3>undefined</h3>
+          <p>Reviews</p>
+        </div>
+        <div class="stat-item">
+          <h3>undefined</h3>
+          <p>Services</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="container text-center">
+      <h2 class="section-title reveal">What We Offer</h2>
+      <p class="section-subtitle reveal">Professional solutions tailored for you</p>
+      <div class="services-grid">
+        <div class="service-card popular reveal">
+          <div class="service-icon"><svg width="48" height="48" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <h3>Fast Turnaround</h3>
+          <p>Quick and reliable service to meet your urgent needs.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg width="48" height="48" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <h3>Quality Assurance</h3>
+          <p>Every job passes rigorous quality checks for your peace of mind.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg width="48" height="48" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
+          <h3>Local Experts</h3>
+          <p>Skilled professionals who understand your community’s needs.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg width="48" height="48" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8v1m0 10v1m-6-5h1m8 0h1M5 12H4m16 0h-1m-2-5l-1-1m-6 0l-1 1m0 8l-1 1m6 0l1 1"/></svg></div>
+          <h3>Transparent Pricing</h3>
+          <p>No hidden fees—know exactly what you’re paying upfront.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg width="48" height="48" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M4 4l5 5M20 20l-5-5M9 4h6M4 9v6M15 20h6M20 15v-6"/></svg></div>
+          <h3>Flexible Scheduling</h3>
+          <p>Book appointments that fit your busy life.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg width="48" height="48" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <h3>Emergency Support</h3>
+          <p>We’re here whenever you need urgent help.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section" style="background:var(--surface);">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <h2>About undefined</h2>
+          <p>undefined is a locally owned business proud to serve the community with integrity and excellence. Our experienced team is committed to delivering reliable solutions that make your life easier.</p>
+          <p>From the first call to project completion, we emphasize clear communication, punctuality, and respect for your property. Join thousands of satisfied customers who trust us for quality and value.</p>
+          <div class="about-stats">
+            <div class="stat-box">
+              <h4 data-count="undefined">0</h4>
+              <p>Projects Completed</p>
+            </div>
+            <div class="stat-box">
+              <h4 data-count="undefined">0</h4>
+              <p>Local Customers</p>
+            </div>
+            <div class="stat-box">
+              <h4 data-count="undefined">0</h4>
+              <p>Years in Business</p>
+            </div>
+            <div class="stat-box">
+              <h4 data-count="undefined">0</h4>
+              <p>Team Members</p>
+            </div>
+          </div>
+          <a href="https://wa.me/undefined" target="_blank" class="btn">Talk to Us on WhatsApp</a>
+        </div>
+        <div class="reveal">
+          <img src="" alt="undefined team at work">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title reveal">What Our Customers Say</h2>
+        <p class="section-subtitle reveal">Real reviews from local residents</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Exceptional service from start to finish. The team was prompt, courteous, and incredibly thorough. I’ll definitely be calling them again."</p>
+          <p><strong>Alex R.</strong><br><small>Homeowner</small></p>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"undefined made the entire process stress-free. Clear communication and fair pricing. Highly recommended for anyone looking for reliable local experts."</p>
+          <p><strong>Maria G.</strong><br><small>Property Manager</small></p>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Fast, friendly, and fantastic results. It’s great to find a company that truly cares about their customers."</p>
+          <p><strong>James L.</strong><br><small>Small Business Owner</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id
